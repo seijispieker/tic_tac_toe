@@ -58,6 +58,7 @@ class Game:
                 for i in range(Game.SIZE))):
             return self.matrix[max_index][max_index]
 
-    def check_tie(self):
+    def full_matrix(self) -> bool:
+        """Return if matrix is full."""
         return (all(self.matrix[0]) and all(self.matrix[1])
                 and all(self.matrix[2]))
