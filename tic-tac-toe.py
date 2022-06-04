@@ -36,3 +36,7 @@ class Game:
         if self.matrix[0][2] and all(self.matrix[i][3 - i] == self.matrix[2][2]
                                      for i in range(3)):
             return self.matrix[2][2]
+
+    def check_tie(self):
+        return (all(self.matrix[0]) and all(self.matrix[1])
+                and all(self.matrix[2]))
