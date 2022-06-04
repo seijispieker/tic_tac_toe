@@ -5,11 +5,11 @@ class Game:
         self.matrix = [[None for _ in range(3)] for _ in range(3)]
 
     def move(self, player, x, y):
-        if player not in self.players:
-            raise Exception('Invalid Player')
-
         if self.matrix[x][y]:
-            raise Exception('Invalid Move.')
+            return False
+        else:
+            self.matrix[x][y] = player
+            return True
 
         self.matrix[x][y] = player
 
