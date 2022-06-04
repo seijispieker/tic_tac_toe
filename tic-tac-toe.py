@@ -11,11 +11,9 @@ class Game:
             self.matrix[x][y] = player
             return True
 
-        self.matrix[x][y] = player
-
-    def is_winner(self):
+    def winnner(self):
         return (self.check_rows() or self.check_columns()
-                or self.check_diagonals())
+                or self.check_diagonals() or self.check_tie())
 
     def check_rows(self):
         for row in self.matrix:
