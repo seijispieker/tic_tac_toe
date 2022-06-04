@@ -44,14 +44,19 @@ class Game:
                                          for x in range(Game.SIZE)):
                 return self.matrix[0][y]
 
-    def check_diagonals(self):
+    def check_diagonals(self) -> str | None:
+        """Returns the player that has a full diagonal or None."""
         if self.matrix[0][0] and all(self.matrix[i][i] == self.matrix[0][0]
-                                     for i in range(3)):
+                                     for i in range(Game.SIZE)):
             return self.matrix[0]
 
-        if self.matrix[0][2] and all(self.matrix[i][3 - i] == self.matrix[2][2]
-                                     for i in range(3)):
-            return self.matrix[2][2]
+        max_index = Game.SIZE - 1
+
+        if (self.matrix[0][max_index] and
+            all(self.matrix[i][Game.SIZE - i]
+                == self.matrix[max_index][max_index]
+                for i in range(Game.SIZE))):
+            return self.matrix[max_index][max_index]
 
     def check_tie(self):
         return (all(self.matrix[0]) and all(self.matrix[1])
