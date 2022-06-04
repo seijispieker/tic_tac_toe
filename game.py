@@ -7,8 +7,20 @@ class Game:
         self.matrix = [[None for _ in range(Game.SIZE)]
                        for _ in range(Game.SIZE)]
 
-    def move(self, player, x, y):
-        if self.matrix[x][y]:
+    def move(self, player: str, x: int, y: int) -> bool:
+        """Make a move with given player and return if move is valid.
+
+        Arguments:
+        player -- 'X' or 'O'
+        x -- x coordinate
+        y -- y coordinate
+
+        Returns true if the move is valid or returns false if the move is
+        invalid.
+        """
+        if x > Game.MATRIX_SIZE or y > Game.MATRIX_SIZE:
+            return False
+        elif self.matrix[x][y]:
             return False
         else:
             self.matrix[x][y] = player
