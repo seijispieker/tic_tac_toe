@@ -2,8 +2,10 @@ class Game:
     players = {'X', 'O'}
     SIZE = 3
 
-    def __init__(self):
-        self.matrix = [[None for _ in range(3)] for _ in range(3)]
+    def __init__(self) -> None:
+        """Initialize by filling a matrix with None."""
+        self.matrix = [[None for _ in range(Game.SIZE)]
+                       for _ in range(Game.SIZE)]
 
     def move(self, player, x, y):
         if self.matrix[x][y]:
