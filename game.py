@@ -37,11 +37,12 @@ class Game:
             if row[0] and all(entry == row[0] for entry in row):
                 return row[0]
 
-    def check_columns(self):
-        for j in range(3):
-            if self.matrix[0][j] and all(self.matrix[i][j] == self.matrix[0][j]
-                                         for i in range(3)):
-                return self.matrix[0][j]
+    def check_columns(self) -> str | None:
+        """Returns the player that has a full column or None."""
+        for y in range(Game.SIZE):
+            if self.matrix[0][y] and all(self.matrix[x][y] == self.matrix[0][y]
+                                         for x in range(Game.SIZE)):
+                return self.matrix[0][y]
 
     def check_diagonals(self):
         if self.matrix[0][0] and all(self.matrix[i][i] == self.matrix[0][0]
