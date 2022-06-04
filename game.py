@@ -31,7 +31,8 @@ class Game:
         return (self.check_rows() or self.check_columns()
                 or self.check_diagonals() or self.full_matrix())
 
-    def check_rows(self):
+    def check_rows(self) -> str | None:
+        """Returns the player that has a full row or return None."""
         for row in self.matrix:
             if row[0] and all(entry == row[0] for entry in row):
                 return row[0]
