@@ -26,9 +26,10 @@ class Game:
             self.matrix[x][y] = player
             return True
 
-    def winnner(self):
+    def winnner(self) -> str | bool:
+        """Returns the winner or True if game is a tie or False if not ended."""
         return (self.check_rows() or self.check_columns()
-                or self.check_diagonals() or self.check_tie())
+                or self.check_diagonals() or self.full_matrix())
 
     def check_rows(self):
         for row in self.matrix:
