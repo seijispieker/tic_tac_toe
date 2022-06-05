@@ -7,23 +7,23 @@ class Game:
         self.matrix = [[None for _ in range(Game.SIZE)]
                        for _ in range(Game.SIZE)]
 
-    def move(self, player: str, x: int, y: int) -> bool:
+    def move(self, player: str, i: int, j: int) -> bool:
         """Make a move with given player and return if move is valid.
 
         Arguments:
         player -- 'X' or 'O'
-        x -- x coordinate
-        y -- y coordinate
+        i -- row index
+        j -- column index
 
         Returns true if the move is valid or returns false if the move is
         invalid.
         """
-        if x > Game.MATRIX_SIZE or y > Game.MATRIX_SIZE:
+        if i > Game.MATRIX_SIZE or j > Game.MATRIX_SIZE:
             return False
-        elif self.matrix[x][y]:
+        elif self.matrix[i][j]:
             return False
         else:
-            self.matrix[x][y] = player
+            self.matrix[i][j] = player
             return True
 
     def winnner(self) -> str | bool:
@@ -39,10 +39,10 @@ class Game:
 
     def check_columns(self) -> str | None:
         """Returns the player that has a full column or None."""
-        for y in range(Game.SIZE):
-            if self.matrix[0][y] and all(self.matrix[x][y] == self.matrix[0][y]
-                                         for x in range(Game.SIZE)):
-                return self.matrix[0][y]
+        for j in range(Game.SIZE):
+            if self.matrix[0][j] and all(self.matrix[i][j] == self.matrix[0][j]
+                                         for i in range(Game.SIZE)):
+                return self.matrix[0][j]
 
     def check_diagonals(self) -> str | None:
         """Returns the player that has a full diagonal or None."""
