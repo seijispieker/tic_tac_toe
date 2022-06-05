@@ -18,7 +18,7 @@ class Game:
         Returns true if the move is valid or returns false if the move is
         invalid.
         """
-        if i > Game.MATRIX_SIZE or j > Game.MATRIX_SIZE:
+        if i > Game.SIZE or j > Game.SIZE:
             return False
         elif self.matrix[i][j]:
             return False
