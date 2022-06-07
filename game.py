@@ -7,6 +7,22 @@ class Game:
         self.matrix = [[None for _ in range(Game.SIZE)]
                        for _ in range(Game.SIZE)]
 
+    def __str__(self) -> str:
+        """Return a string representation of the current game."""
+        line = Game.SIZE * 2 * '-' + '-\n'
+        string = line
+
+        for row in self.matrix:
+            for entry in row:
+                if not entry:
+                    entry = ' '
+
+                string += f'|{entry}'
+
+            string += f'|\n{line}'
+
+        return string[:-1]
+
     def move(self, player: str, i: int, j: int) -> bool:
         """Make a move with given player and return if move is valid.
 
