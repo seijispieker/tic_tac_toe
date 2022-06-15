@@ -14,7 +14,7 @@ class Game:
 
         for row in self.matrix:
             for entry in row:
-                if not entry:
+                if not entry:  # Entry is None thus empty.
                     entry = ' '
 
                 string += f'|{entry}'
