@@ -1,15 +1,13 @@
 class Game:
     players = {'X', 'O'}
-    SIZE = 3
 
     def __init__(self) -> None:
-        """Initialize by filling a matrix with None."""
-        self.matrix = [[None for _ in range(Game.SIZE)]
-                       for _ in range(Game.SIZE)]
+        """Initialize by filling a 3 by 3 matrix with None."""
+        self.matrix = [[None for _ in range(3)] for _ in range(3)]
 
     def __str__(self) -> str:
         """Return a string representation of the current game."""
-        line = Game.SIZE * 2 * '-' + '-\n'
+        line = f'{7*"-"}\n'
         string = line
 
         for row in self.matrix:
@@ -34,7 +32,7 @@ class Game:
         Returns true if the move is valid or returns false if the move is
         invalid.
         """
-        if i >= Game.SIZE or j >= Game.SIZE:
+        if i >= 3 or j >= 3:
             return False
         elif self.matrix[i][j]:
             return False
@@ -55,24 +53,20 @@ class Game:
 
     def check_columns(self) -> str | None:
         """Returns the player that has a full column or None."""
-        for j in range(Game.SIZE):
+        for j in range(3):
             if self.matrix[0][j] and all(self.matrix[i][j] == self.matrix[0][j]
-                                         for i in range(Game.SIZE)):
+                                         for i in range(3)):
                 return self.matrix[0][j]
 
     def check_diagonals(self) -> str | None:
         """Returns the player that has a full diagonal or None."""
         if self.matrix[0][0] and all(self.matrix[i][i] == self.matrix[0][0]
-                                     for i in range(Game.SIZE)):
+                                     for i in range(3)):
             return self.matrix[0]
 
-        max_index = Game.SIZE - 1
-
-        if (self.matrix[0][max_index] and
-            all(self.matrix[i][Game.SIZE - i]
-                == self.matrix[max_index][max_index]
-                for i in range(Game.SIZE))):
-            return self.matrix[max_index][max_index]
+        if self.matrix[0][2] and all(self.matrix[i][3 - i] == self.matrix[2][2]
+                                     for i in range(3)):
+            return self.matrix[2][2]
 
     def full_matrix(self) -> bool:
         """Return if matrix is full."""
