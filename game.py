@@ -1,5 +1,5 @@
 class Game:
-    players = {'X', 'O'}
+    PLAYERS = {'X', 'O'}
 
     def __init__(self) -> None:
         """Initialize by filling a 3 by 3 matrix with None."""
