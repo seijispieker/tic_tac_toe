@@ -1,5 +1,19 @@
+"""A three by three tic-tac-toe game.
+
+Attributes:
+    PLAYERS: Set of the two possible players: 'X' or 'O'.
+"""
+
+PLAYERS = {'X', 'O'}
+
+
 class Game:
-    PLAYERS = {'X', 'O'}
+    """A three by three tic-tac-toe game.
+
+    Attributes:
+        matrix: A list containing three lists of length three representing the
+            tic-tac-toe game.
+    """
 
     def __init__(self) -> None:
         """Constructs by initializing a 3 by 3 matrix with None."""
