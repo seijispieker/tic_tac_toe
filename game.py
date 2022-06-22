@@ -28,12 +28,12 @@ class Game:
         """Make a move with given player and return if move is valid.
 
         Arguments:
-        player -- 'X' or 'O'
-        i -- row index
-        j -- column index
+            player: 'X' or 'O'.
+            i: Row index 0, 1 or 2.
+            j: Column index 0, 1 or 2.
 
-        Returns true if the move is valid or returns false if the move is
-        invalid.
+        Returns:
+            True if the move is valid or False if the move is invalid.
         """
         if i >= 3 or j >= 3:
             return False
