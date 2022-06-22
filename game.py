@@ -2,14 +2,14 @@ class Game:
     PLAYERS = {'X', 'O'}
 
     def __init__(self) -> None:
-        """Initialize by filling a 3 by 3 matrix with None."""
+        """Constructs by initializing a 3 by 3 matrix with None."""
         self.matrix = []
 
         for _ in range(3):
             self.matrix.append([None for _ in range(3)])
 
     def __str__(self) -> str:
-        """Return a string representation of the current game."""
+        """Returns a string representation of the current game."""
         line = f'{7*"-"}\n'
         string = line
 
@@ -25,7 +25,7 @@ class Game:
         return string[:-1]
 
     def move(self, player: str, i: int, j: int) -> bool:
-        """Make a move with given player and return if move is valid.
+        """Makes a move with given player and returns if move is valid.
 
         Arguments:
             player: 'X' or 'O'.
@@ -49,7 +49,7 @@ class Game:
                 or self.check_diagonals() or self.full_matrix())
 
     def check_rows(self) -> str | None:
-        """Returns the player that has a full row or return None."""
+        """Returns the player that has a full row or None."""
         for row in self.matrix:
             if row[0] and all(entry == row[0] for entry in row):
                 return row[0]
@@ -72,6 +72,6 @@ class Game:
             return self.matrix[2][2]
 
     def full_matrix(self) -> bool:
-        """Return if matrix is full."""
+        """Returns if matrix is full."""
         return (all(self.matrix[0]) and all(self.matrix[1])
                 and all(self.matrix[2]))
