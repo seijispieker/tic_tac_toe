@@ -3,7 +3,10 @@ class Game:
 
     def __init__(self) -> None:
         """Initialize by filling a 3 by 3 matrix with None."""
-        self.matrix = [[None for _ in range(3)] for _ in range(3)]
+        self.matrix = []
+
+        for _ in range(3):
+            self.matrix.append([None for _ in range(3)])
 
     def __str__(self) -> str:
         """Return a string representation of the current game."""
