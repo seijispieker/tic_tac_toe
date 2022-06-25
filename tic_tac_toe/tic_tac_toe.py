@@ -26,10 +26,13 @@ class TicTacToe:
 
     def __str__(self) -> str:
         """Returns a string representation of the current game."""
-        line = f'{7*"-"}\n'
-        string = line
+        string = '  0 1 2 \n'  # Column indices.
+        line = f' {7*"-"}\n'
+        string += line
 
-        for row in self.__matrix:
+        for i, row in enumerate(self.__matrix):
+            string += str(i)  # Row indices.
+
             for entry in row:
                 if not entry:  # Entry is None thus empty.
                     entry = ' '
