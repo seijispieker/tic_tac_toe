@@ -1,7 +1,9 @@
+from typing import Tuple
+
 from tic_tac_toe import tic_tac_toe
 
 
-def main():
+def main() -> None:
     game = tic_tac_toe.TicTacToe()
     i = 0
 
@@ -24,7 +26,8 @@ def main():
         i += 1
 
 
-def ask_indices():
+def ask_indices() -> Tuple[int, int]:
+    """"""
     i, j = None, None  # i = row index, j = column index
 
     while True:
