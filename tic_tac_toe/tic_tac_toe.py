@@ -7,7 +7,7 @@ Attributes:
 PLAYERS = ['X', 'O']
 
 
-class Game:
+class TicTacToe:
     """A three by three tic-tac-toe game.
 
     Attributes:
