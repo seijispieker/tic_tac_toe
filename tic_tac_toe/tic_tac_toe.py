@@ -62,7 +62,7 @@ class TicTacToe:
             self.__matrix[i][j] = player
             return True
 
-    def winnner(self) -> str | bool:
+    def winner(self) -> str | bool:
         """Returns the winner or True if game is a tie or False if not ended."""
         return (self.__check_rows() or self.__check_columns()
                 or self.__check_diagonals() or self.__full_matrix())
