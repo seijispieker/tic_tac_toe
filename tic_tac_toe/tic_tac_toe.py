@@ -1,10 +1,10 @@
 """A three by three tic-tac-toe game.
 
 Attributes:
-    PLAYERS: Set of the two possible players: 'X' or 'O'.
+    PLAYERS: List of the two possible players: 'X' or 'O'.
 """
 
-PLAYERS = {'X', 'O'}
+PLAYERS = ['X', 'O']
 
 
 class Game:
