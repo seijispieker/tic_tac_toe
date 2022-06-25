@@ -1,11 +1,13 @@
+"""Main script that starts the tic-tac-toe game."""
 from typing import Tuple
 
 from tic_tac_toe import tic_tac_toe
 
 
 def main() -> None:
+    """Start a while loop and ask user input."""
     game = tic_tac_toe.TicTacToe()
-    i = 0
+    i = 0  # Even numbers is X's turn, odd numbers is O's turn.
 
     while True:
         current_player = tic_tac_toe.PLAYERS[i % 2]
@@ -27,7 +29,7 @@ def main() -> None:
 
 
 def ask_indices() -> Tuple[int, int]:
-    """"""
+    """Ask the user for row and column indices and return as tuple."""
     i, j = None, None  # i = row index, j = column index
 
     while True:
