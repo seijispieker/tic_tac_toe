@@ -2,9 +2,11 @@
 
 Attributes:
     PLAYERS: List of the two possible players: 'X' or 'O'.
+    POSSIBLE_INDICES: List of possible row and column indices.
 """
 
 PLAYERS = ['X', 'O']
+POSSIBLE_INDICES = [0, 1, 2]
 
 
 class TicTacToe:
