@@ -13,16 +13,16 @@ class TicTacToe:
     """A three by three tic-tac-toe game.
 
     Attributes:
-        __matrix: A list containing three lists of length three representing
+        _matrix: A list containing three lists of length three representing
             the tic-tac-toe game. A entry contains 'X', 'O' or None.
     """
 
     def __init__(self) -> None:
         """Constructs by initializing a 3 by 3 matrix with None."""
-        self.__matrix = []
+        self._matrix = []
 
         for _ in range(3):
-            self.__matrix.append([None for _ in range(3)])
+            self._matrix.append([None for _ in range(3)])
 
     def __str__(self) -> str:
         """Returns a string representation of the current game."""
@@ -30,7 +30,7 @@ class TicTacToe:
         line = f' {7*"-"}\n'
         string += line
 
-        for i, row in enumerate(self.__matrix):
+        for i, row in enumerate(self._matrix):
             string += str(i)  # Row indices.
 
             for entry in row:
@@ -56,44 +56,44 @@ class TicTacToe:
         """
         if i >= 3 or j >= 3:
             return False
-        elif self.__matrix[i][j]:
+        elif self._matrix[i][j]:
             return False
         else:
-            self.__matrix[i][j] = player
+            self._matrix[i][j] = player
             return True
 
     def winner(self) -> str | bool:
         """Returns the winner or True if game is a tie or False if not ended."""
-        return (self.__check_rows() or self.__check_columns()
-                or self.__check_diagonals() or self.__full_matrix())
+        return (self._check_rows() or self._check_columns()
+                or self._check_diagonals() or self._full_matrix())
 
-    def __check_rows(self) -> str | None:
+    def _check_rows(self) -> str | None:
         """Returns the player that has a full row or None."""
-        for row in self.__matrix:
+        for row in self._matrix:
             if row[0] and all(entry == row[0] for entry in row):
                 return row[0]
 
-    def __check_columns(self) -> str | None:
+    def _check_columns(self) -> str | None:
         """Returns the player that has a full column or None."""
         for j in range(3):
-            if self.__matrix[0][j] and all(self.__matrix[i][j]
-                                           == self.__matrix[0][j]
+            if self._matrix[0][j] and all(self._matrix[i][j]
+                                           == self._matrix[0][j]
                                            for i in range(3)):
-                return self.__matrix[0][j]
+                return self._matrix[0][j]
 
-    def __check_diagonals(self) -> str | None:
+    def _check_diagonals(self) -> str | None:
         """Returns the player that has a full diagonal or None."""
-        if self.__matrix[0][0] and all(self.__matrix[i][i]
-                                       == self.__matrix[0][0]
+        if self._matrix[0][0] and all(self._matrix[i][i]
+                                       == self._matrix[0][0]
                                        for i in range(3)):
-            return self.__matrix[0]
+            return self._matrix[0]
 
-        if self.__matrix[0][2] and all(self.__matrix[i][3 - i]
-                                       == self.__matrix[2][2]
+        if self._matrix[0][2] and all(self._matrix[i][3 - i]
+                                       == self._matrix[2][2]
                                        for i in range(3)):
-            return self.__matrix[2][2]
+            return self._matrix[2][2]
 
-    def __full_matrix(self) -> bool:
+    def _full_matrix(self) -> bool:
         """Returns if matrix is full."""
-        return (all(self.__matrix[0]) and all(self.__matrix[1])
-                and all(self.__matrix[2]))
+        return (all(self._matrix[0]) and all(self._matrix[1])
+                and all(self._matrix[2]))
