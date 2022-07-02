@@ -1,4 +1,10 @@
+# Mac OS
 .DS_Store
+
+# VS Code
 .vscode
+
+# Python
 .venv
 __pycache__
+.mypy_cache
