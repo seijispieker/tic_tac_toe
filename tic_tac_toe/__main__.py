@@ -7,36 +7,38 @@ from tic_tac_toe import tic_tac_toe
 def main() -> None:
     """Start a while loop and ask user input."""
     game = tic_tac_toe.TicTacToe()
-    i = 0  # Even numbers is X's turn, odd numbers is O's turn.
+    print(game)
 
     while True:
-        current_player = tic_tac_toe.PLAYERS[i % 2]
+        print(f"{game.current_player.value}'s turn")
+
+        try:
+            game.move(*ask_indices())
+        except (IndexError, tic_tac_toe.InvalidMoveError) as error:
+            print(error)
+            continue
 
         print(game)
-        print(f"{current_player}'s turn ***")
-
-        if not game.move(current_player, *ask_indices()):
-            print('Invalid move.')
-            continue
 
         if winner := game.winner():
             if winner is True:
                 print('It is a tie!')
-            else:
+            elif (winner is tic_tac_toe.Player.X or
+                  winner is tic_tac_toe.Player.O):
                 print(f'{winner} has won!')
+            else:
+                continue
 
-        i += 1
+            break
 
 
 def ask_indices() -> Tuple[int, int]:
     """Ask the user for row and column indices and return as tuple."""
-    i, j = None, None  # i = row index, j = column index
-
     while True:
-        i = input('Row index: ')
+        i_string = input('Row index: ')
 
-        if i.isnumeric():
-            i = int(i)
+        if i_string.isnumeric():
+            i = int(i_string)
 
             if i in tic_tac_toe.POSSIBLE_INDICES:
                 break
@@ -44,10 +46,10 @@ def ask_indices() -> Tuple[int, int]:
         print('Invalid row index.')
 
     while True:
-        j = input('Column index: ')
+        j_string = input('Column index: ')
 
-        if j.isnumeric():
-            j = int(j)
+        if j_string.isnumeric():
+            j = int(j_string)
 
             if j in tic_tac_toe.POSSIBLE_INDICES:
                 break
