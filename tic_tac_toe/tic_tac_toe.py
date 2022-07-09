@@ -5,15 +5,10 @@ Attributes:
 """
 
 from enum import Enum
-from typing import List
+from typing import Iterable, List
 
 
 POSSIBLE_INDICES = {0, 1, 2}
-
-
-class InvalidMoveError(Exception):
-    """This Exception is raised when a move is not possible."""
-    pass
 
 
 class Player(Enum):
@@ -21,6 +16,13 @@ class Player(Enum):
     X = 'X'
     O = 'O'
     EMPTY = ' '
+
+
+INITIAL_MATRIX = [
+    [Player.EMPTY, Player.EMPTY, Player.EMPTY],
+    [Player.EMPTY, Player.EMPTY, Player.EMPTY],
+    [Player.EMPTY, Player.EMPTY, Player.EMPTY],
+]
 
 
 class TicTacToe:
@@ -32,13 +34,26 @@ class TicTacToe:
             tic-tac-toe game. A entry contains a Player Enum.
     """
 
-    def __init__(self) -> None:
-        """Constructs by initializing a 3 by 3 matrix with Player.EMPTY."""
+    def __init__(self,
+                 matrix: Iterable[Iterable[Player]] = INITIAL_MATRIX) -> None:
+        """Constructs TicTacToe object by deep copying matrix.
+
+        Args:
+            matrix: An iterable that has three iterables that has three Player
+                Enums.
+
+        Raises:
+            ValueError: If matrix has wrong dimensions.
+        """
         self.current_player = Player.X  # Player whoes turn it is.
         self._matrix: List[List[Player]] = []
 
-        for _ in range(3):
-            self._matrix.append([Player.EMPTY for _ in range(3)])
+        for row in matrix:
+            self._matrix.append([entry for entry in row])
+
+        if (len(self._matrix) != 3 or len(self._matrix[0]) != 3
+                or len(self._matrix[1]) != 3 or len(self._matrix[2]) != 3):
+            raise ValueError('Matrix has wrong dimensions.')
 
     def __str__(self) -> str:
         """Returns a string representation of the current game."""
@@ -77,7 +92,7 @@ class TicTacToe:
         elif j not in POSSIBLE_INDICES:
             raise IndexError('Column index j can only be 0, 1 or 2.')
         elif self._matrix[i][j] is not Player.EMPTY:
-            raise InvalidMoveError('Move is not possible.')
+            raise ValueError('Move is not possible.')
         else:  # Move can be made.
             self._matrix[i][j] = self.current_player
 
