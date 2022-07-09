@@ -33,7 +33,7 @@ class TicTacToe:
     """
 
     def __init__(self) -> None:
-        """Constructs by initializing a 3 by 3 matrix with None."""
+        """Constructs by initializing a 3 by 3 matrix with Player.EMPTY."""
         self.current_player = Player.X  # Player whoes turn it is.
         self._matrix: List[List[Player]] = []
 
