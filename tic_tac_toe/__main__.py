@@ -25,7 +25,7 @@ def main() -> None:
                 print('It is a tie!')
             elif (winner is tic_tac_toe.Player.X or
                   winner is tic_tac_toe.Player.O):
-                print(f'{winner} has won!')
+                print(f'{winner.value} has won!')
             else:
                 continue
 
