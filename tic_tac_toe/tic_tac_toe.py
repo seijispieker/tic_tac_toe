@@ -2,6 +2,7 @@
 
 Attributes:
     POSSIBLE_INDICES: Set of possible row and column indices.
+    SIZE: The dimension of the Tic-Tac-Toe game.
 """
 
 from enum import Enum
@@ -9,6 +10,7 @@ from typing import Iterable, List
 
 
 POSSIBLE_INDICES = {0, 1, 2}  # Possible row and column indices.
+SIZE = 3  # Therefore a 3 by 3 Tic-Tac-Toe game.
 
 
 class Player(Enum):
@@ -51,9 +53,9 @@ class TicTacToe:
         for row in matrix:
             self._matrix.append([entry for entry in row])
 
-        if (len(self._matrix) != 3 or len(self._matrix[0]) != 3
-                or len(self._matrix[1]) != 3 or len(self._matrix[2]) != 3):
-            raise ValueError('Matrix has wrong dimensions.')
+        if (len(self._matrix) != SIZE or len(self._matrix[0]) != SIZE or
+                len(self._matrix[1]) != SIZE or len(self._matrix[2]) != SIZE):
+            raise ValueError(f'Matrix needs to be {SIZE} by {SIZE}.')
 
     def __str__(self) -> str:
         """Returns a string representation of the current game."""
@@ -123,18 +125,18 @@ class TicTacToe:
 
     def _check_columns(self) -> Player | bool:
         """Returns player that has full row or False."""
-        for j in range(3):
-            if all(self._matrix[i][j] is self._matrix[0][j] for i in range(3)):
+        for j in range(SIZE):
+            if all(self._matrix[i][j] is self._matrix[0][j] for i in range(SIZE)):
                 return self._matrix[0][j]
         else:
             return False
 
     def _check_diagonals(self) -> Player | bool:
         """Returns player that has a full diagonal or False."""
-        if all(self._matrix[i][i] is self._matrix[0][0] for i in range(3)):
+        if all(self._matrix[i][i] is self._matrix[0][0] for i in range(SIZE)):
             return self._matrix[0][0]
         elif all(self._matrix[i][2 - i] is self._matrix[0][2]
-                 for i in range(3)):
+                 for i in range(SIZE)):
             return self._matrix[2][2]
         else:
             return False
@@ -142,4 +144,4 @@ class TicTacToe:
     def _full_matrix(self) -> bool:
         """Returns True matrix is full or False if not full."""
         return all(self._matrix[i][j] is not Player.EMPTY
-                   for i in range(3) for j in range(3))
+                   for i in range(SIZE) for j in range(SIZE))
