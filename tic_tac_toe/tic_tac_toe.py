@@ -1,14 +1,14 @@
 """A three by three tic-tac-toe game.
 
 Attributes:
-    POSSIBLE_INDICES: List of possible row and column indices.
+    POSSIBLE_INDICES: Set of possible row and column indices.
 """
 
 from enum import Enum
 from typing import Iterable, List
 
 
-POSSIBLE_INDICES = {0, 1, 2}
+POSSIBLE_INDICES = {0, 1, 2}  # Possible row and column indices.
 
 
 class Player(Enum):
