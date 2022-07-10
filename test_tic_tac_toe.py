@@ -4,19 +4,18 @@ import unittest
 from tic_tac_toe import tic_tac_toe
 
 
-class InitialTicTacToeTestCase(unittest.TestCase):
-    """Tests the initialisation of TicTacToe object."""
+class InitTicTacToeTestCase(unittest.TestCase):
+    """Tests __init__ method of TicTacToe."""
 
-    def setUp(self) -> None:
-        """Create a TicTacToe object."""
-        self.tic_tac_toe = tic_tac_toe.TicTacToe()
-
-    def test_tic_tac_toe_initial_matrix(self) -> None:
-        """Tests the initialisation of _matrix attribute of TicTacToe object."""
-        E = tic_tac_toe.Player.EMPTY
-        initial_matrix = [[E, E, E], [E, E, E], [E, E, E]]
-        self.assertListEqual(self.tic_tac_toe._matrix, initial_matrix,
-                             'Invalid intial matrix.')
+    def test_tic_tac_toe_init_without_argument(self) -> None:
+        """Tests if _matrix attribute is a deep copy of INITIAL_MATRIX."""
+        tic_tac_toe_object = tic_tac_toe.TicTacToe()
+        self.assertListEqual(tic_tac_toe_object._matrix,
+                             tic_tac_toe.INITIAL_MATRIX,
+                             '_matrix is not equal to INITIAL_MATRIX')
+        self.assertIsNot(tic_tac_toe_object._matrix,
+                         tic_tac_toe.INITIAL_MATRIX,
+                         '_matrix is not a deep copy of INITIAL_MATRIX')
 
 
 if __name__ == '__main__':
