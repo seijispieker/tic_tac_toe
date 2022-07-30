@@ -38,9 +38,9 @@ class TicTacToe:
 
     def __init__(self,
                  matrix: Iterable[Iterable[Player]] = INITIAL_MATRIX) -> None:
-        """Constructs TicTacToe object by deep copying matrix.
+        """Constructs TicTacToe object by deep copying the parameter matrix.
 
-        Args:
+        Arguments:
             matrix: An iterable that has three iterables that has three Player
                 Enums.
 
