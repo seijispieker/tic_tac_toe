@@ -26,15 +26,18 @@ class TicTacToeInitTestCase(unittest.TestCase):
         Asserts if _matrix attribute is a deep copy of random sample of size
         k of all the possible 3 by 3 matrices.
         """
+        # Generates all possible 3 by 3 matrices with all possible Player Enums.
         rows = itertools.product((player for player in tic_tac_toe.Player),
                                  repeat=tic_tac_toe.SIZE)
         matrices = itertools.product(rows, repeat=tic_tac_toe.SIZE)
 
+        # Makes sure that k is not bigger than number of possibilities.
         if k > (n := len(tic_tac_toe.Player)**(tic_tac_toe.SIZE**2)):
             k = n
 
         sample = random.sample(list(matrices), k=k)
 
+        # Assert for each matrix in the random sample.
         for matrix in sample:
             with self.subTest(matrix=matrix):
                 matrix_list = [list(row) for row in matrix]
@@ -48,6 +51,7 @@ class TicTacToeInitTestCase(unittest.TestCase):
         self.assertListEqual(copy, original, '_matrix is not a copy')
         self.assertIsNot(copy, original, '_matrix is not a deep copy')
 
+        # Assert for lower depth.
         for _matrix_row, original_row in zip(copy, original):
             self.assertIsNot(_matrix_row, original_row,
                              'row of _matrix is not a deep copy')
