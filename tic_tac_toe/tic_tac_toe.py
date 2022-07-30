@@ -47,15 +47,18 @@ class TicTacToe:
         Raises:
             ValueError: If matrix has wrong dimensions.
         """
-        self.current_player = Player.X  # Player whoes turn it is.
-        self._matrix: List[List[Player]] = []
+        # Player whoes turn it is.
+        self.current_player = Player.X
 
+        # Makes a deep copy of the parameter matrix.
+        self._matrix: List[List[Player]] = []
         for row in matrix:
             self._matrix.append([entry for entry in row])
 
+        # Checks dimensions of matrix.
         if (len(self._matrix) != SIZE or len(self._matrix[0]) != SIZE or
                 len(self._matrix[1]) != SIZE or len(self._matrix[2]) != SIZE):
-            raise ValueError(f'Matrix needs to be {SIZE} by {SIZE}.')
+            raise ValueError(f'matrix needs to be {SIZE} by {SIZE}')
 
     def __str__(self) -> str:
         """Returns a string representation of the current game."""
