@@ -10,7 +10,7 @@ from tic_tac_toe import tic_tac_toe
 class TicTacToeInitTestCase(unittest.TestCase):
     """Tests __init__ method of TicTacToe."""
 
-    def test_tic_tac_toe_init_deep_copy_initial_matrix(self) -> None:
+    def test_tic_tac_toe_init_initial_matrix(self) -> None:
         """Tests __init__ method of TicTacToe without arguments.
 
         Asserts if _matrix attribute is a deep copy of INITIAL_MATRIX, the
@@ -20,8 +20,8 @@ class TicTacToeInitTestCase(unittest.TestCase):
         self.assert_matrix_deep_copy(copy=tic_tac_toe_object._matrix,
                                      original=tic_tac_toe.INITIAL_MATRIX)
 
-    def test_tic_tac_toe_init_with_argument(self, k: int = 10**10) -> None:
-        """Tests __init__ method of TicTacToe with arguments.
+    def test_tic_tac_toe_init_random_sample(self, k: int = 10**10) -> None:
+        """Tests __init__ method of TicTacToe with random sample of arguments.
 
         Asserts if _matrix attribute is a deep copy of random sample of size
         k of all the possible 3 by 3 matrices.
