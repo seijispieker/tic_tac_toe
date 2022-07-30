@@ -8,7 +8,7 @@ import unittest
 from tic_tac_toe import tic_tac_toe
 
 
-class TicTacToeTestCase(unittest.TestCase):
+class TicTacToeBaseTestCase(unittest.TestCase):
     """Base class for each of the Tic-Tac-Toe test cases."""
 
     def assert_matrix_deep_copy(self, copy: List[List[tic_tac_toe.Player]],
@@ -23,7 +23,7 @@ class TicTacToeTestCase(unittest.TestCase):
                              'row of _matrix is not a deep copy')
 
 
-class TicTacToeInitialMatrixTestCase(TicTacToeTestCase):
+class TicTacToeInitialMatrixTestCase(TicTacToeBaseTestCase):
     """Tests TicTacToe instance initialized without argument.
 
     Attributes:
@@ -57,7 +57,7 @@ class TicTacToeInitialMatrixTestCase(TicTacToeTestCase):
         self.assertMultiLineEqual(str(self.tic_tac_toe), INITIAL_MATRIX_STR)
 
 
-class TicTacToeRandomSampleTestCase(TicTacToeTestCase):
+class TicTacToeRandomSampleTestCase(TicTacToeBaseTestCase):
     """Tests TicTacToe instances initialized with a random sample.
 
     Attributes:
