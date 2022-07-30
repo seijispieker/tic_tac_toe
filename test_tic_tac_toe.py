@@ -1,6 +1,7 @@
 """Tests functionality of the tic_tac_toe.tic_tac_toe module."""
 import itertools
 import random
+import textwrap
 from typing import List
 import unittest
 
@@ -41,6 +42,19 @@ class TicTacToeInitialMatrixTestCase(TicTacToeTestCase):
         """
         self.assert_matrix_deep_copy(copy=self.tic_tac_toe._matrix,
                                      original=tic_tac_toe.INITIAL_MATRIX)
+
+    def test_tic_tac_toe_str(self) -> None:
+        """Tests __str__ method of TicTacToe with empty matrix."""
+        INITIAL_MATRIX_STR = textwrap.dedent('''\
+          0 1 2 
+         -------
+        0| | | |
+         -------
+        1| | | |
+         -------
+        2| | | |
+         -------''')
+        self.assertMultiLineEqual(str(self.tic_tac_toe), INITIAL_MATRIX_STR)
 
 
 class TicTacToeRandomSampleTestCase(TicTacToeTestCase):
