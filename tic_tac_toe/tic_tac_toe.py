@@ -33,7 +33,7 @@ class TicTacToe:
     Attributes:
         current_player: The player whoes turn it is.
         _matrix: A list containing three lists of length three representing the
-            tic-tac-toe game. A entry contains a Player Enum.
+            Tic-Tac-Toe game. A entry contains a Player Enum.
     """
 
     def __init__(self,
