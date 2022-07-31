@@ -40,7 +40,7 @@ class TicTacToe:
     def __init__(self, matrix: List[List[Player]] = INITIAL_MATRIX) -> None:
         """Constructs TicTacToe object by deep copying matrix.
 
-        Arguments:
+        Parameters:
             matrix: A list that has three lists that has three Player Enums.
 
         Raises:
@@ -81,7 +81,7 @@ class TicTacToe:
     def move(self, i: int, j: int) -> None:
         """Makes a move with the player whoes turn it is with the given indices.
 
-        Arguments:
+        Parameters:
             i: Row index 0, 1 or 2.
             j: Column index 0, 1 or 2.
 
