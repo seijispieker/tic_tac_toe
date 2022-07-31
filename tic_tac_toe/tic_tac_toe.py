@@ -7,7 +7,7 @@ Attributes:
 
 import copy
 from enum import Enum
-from typing import Iterable, List
+from typing import List
 
 
 POSSIBLE_INDICES = {0, 1, 2}  # Possible row and column indices.
@@ -44,11 +44,17 @@ class TicTacToe:
             matrix: A list that has three lists that has three Player Enums.
 
         Raises:
+            TypeError: If matrix has wrong type.
             ValueError: If matrix has wrong dimensions.
         """
+        if (not isinstance(matrix, list) or len(matrix) < 1
+                or not isinstance(matrix[0], list) or len(matrix[0]) < 1
+                or not isinstance(matrix[0][0], Player)):
+            raise TypeError(f'matrix needs to be of type: List[List[Player]]')
+
         # Checks dimensions of matrix.
-        if (len(matrix) != SIZE or len(matrix[0]) != SIZE or
-                len(matrix[1]) != SIZE or len(matrix[2]) != SIZE):
+        if (len(matrix) != SIZE or len(matrix[0]) != SIZE
+                or len(matrix[1]) != SIZE or len(matrix[2]) != SIZE):
             raise ValueError(f'matrix needs to be {SIZE} by {SIZE}')
 
         # Player whoes turn it is.
