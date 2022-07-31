@@ -5,6 +5,7 @@ Attributes:
     SIZE: The dimension of the Tic-Tac-Toe game.
 """
 
+import copy
 from enum import Enum
 from typing import Iterable, List
 
@@ -36,29 +37,25 @@ class TicTacToe:
             Tic-Tac-Toe game. A entry contains a Player Enum.
     """
 
-    def __init__(self,
-                 matrix: Iterable[Iterable[Player]] = INITIAL_MATRIX) -> None:
-        """Constructs TicTacToe object by deep copying the parameter matrix.
+    def __init__(self, matrix: List[List[Player]] = INITIAL_MATRIX) -> None:
+        """Constructs TicTacToe object by deep copying matrix.
 
         Arguments:
-            matrix: An iterable that has three iterables that has three Player
-                Enums.
+            matrix: A list that has three lists that has three Player Enums.
 
         Raises:
             ValueError: If matrix has wrong dimensions.
         """
+        # Checks dimensions of matrix.
+        if (len(matrix) != SIZE or len(matrix[0]) != SIZE or
+                len(matrix[1]) != SIZE or len(matrix[2]) != SIZE):
+            raise ValueError(f'matrix needs to be {SIZE} by {SIZE}')
+
         # Player whoes turn it is.
         self.current_player = Player.X
 
-        # Makes a deep copy of the parameter matrix.
-        self._matrix: List[List[Player]] = []
-        for row in matrix:
-            self._matrix.append([entry for entry in row])
-
-        # Checks dimensions of matrix.
-        if (len(self._matrix) != SIZE or len(self._matrix[0]) != SIZE or
-                len(self._matrix[1]) != SIZE or len(self._matrix[2]) != SIZE):
-            raise ValueError(f'matrix needs to be {SIZE} by {SIZE}')
+        # Deepcopies matrix.
+        self._matrix: List[List[Player]] = copy.deepcopy(matrix)
 
     def __str__(self) -> str:
         """Returns a string representation of the current game."""
