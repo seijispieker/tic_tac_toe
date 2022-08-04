@@ -9,18 +9,18 @@ from tic_tac_toe import tic_tac_toe
 
 
 class TicTacToeBaseTestCase(unittest.TestCase):
-    """Base class for each of the Tic-Tac-Toe test cases."""
+    """Base class for each of the Tic-Tac-Toe TestCases."""
 
     def assert_matrix_deep_copy(self, copy: List[List[tic_tac_toe.Player]],
                                 original: List[List[tic_tac_toe.Player]]) -> None:
         """Asserts if copy matrix is an deep copy of original matrix."""
-        self.assertListEqual(copy, original, '_matrix is not a copy')
-        self.assertIsNot(copy, original, '_matrix is not a deep copy')
+        message = '_matrix is not a deep copy'
+        self.assertListEqual(copy, original, message)
+        self.assertIsNot(copy, original, message)
 
         # Assert for lower depth.
         for _matrix_row, original_row in zip(copy, original):
-            self.assertIsNot(_matrix_row, original_row,
-                             'row of _matrix is not a deep copy')
+            self.assertIsNot(_matrix_row, original_row, message)
 
 
 class TicTacToeInitialMatrixTestCase(TicTacToeBaseTestCase):
